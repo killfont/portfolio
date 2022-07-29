@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block style %}
+			{% include "style.twig" %}
+		{% endblock %}
+		<title>TWIG</title>
+	</head>
+
+	<body>
+	<main>
+		<div>
+			{% block header %}
+				{% include "header.twig" %}
+			{% endblock %}
+		</div>
+		<div id="about">
+			{% block main %}
+				{% include "bio.twig" %}
+			{% endblock %}
+		</div>
+		<div id="skill" style="display: none">
+			{% block skill %}
+				{% include "comp.twig" %}
+			{% endblock %}
+		</div>
+
+		<div id="exp" style="display: none">
+			{% block exp %}
+				{% include "exp.twig" %}
+			{% endblock %}
+		</div>
+
+		<div id="formation" style="display: none">
+			{% block formation %}
+				{% include "formation.twig" %}
+			{% endblock %}
+		</div>
+
+		<div id="contact" style="display: none">
+			{% block contact %}
+				{% include "contact.twig" %}
+			{% endblock %}
+		</div>
+
+		</main>
+	</body>
+	<script src="./js/main.js"></script>
+	<script src="./js/card.js"></script>
+
+
+</html>

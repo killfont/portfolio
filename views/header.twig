@@ -1,0 +1,70 @@
+<header>
+
+	<div id="mySidenav" class="sidenav ">
+		{% if user %}
+		<div>
+		<a href="/logout"><img src="./img/logout.png" alt="" id="logout"></a>
+		</div>
+			<div id="colorlock">
+				<a href="/login"><img src="./img/unlock-b.png" alt="" id="lock"></a>
+			</div>
+			
+		{% else %}
+			<div id="colorlock">
+				<a href="/login"><img src="./img/lock-b.png" alt="" id="lock"></a>
+			</div>
+		{% endif %}
+
+		<p id="closeBtn" href="" class="close">×</p>
+
+		<input type="checkbox" id="mode">
+		<label class="switch ms-4 mt-2" for="mode" onclick="lockUnlock()">
+			<i class="far fa-sun"><img id="sun" src="./img/sun.png" alt=""></i>
+			<i class="far fa-moon"><img id="moon" src="./img/moon.png" alt=""></i>
+		</label>
+		<ul>
+
+			<li>
+				<p onclick="about()">A propos</p>
+			</li>
+			<li>
+				<p onclick="skill()">Compétences</p>
+			</li>
+			<li>
+				<p onclick="exp()">Expériences</p>
+			</li>
+			<li>
+				<p onclick="formation()">Formations</p>
+			</li>
+			<li>
+				<p onclick="contact()">Contact</p>
+			</li>
+
+			<li>
+				<a href="https://www.hipdf.com/download-file?share_id=1n7O197NpDp-bKFiQqb3eA">
+					<p>TELECHARGER MON CV</p>
+				</a>
+			</li>
+			<details>
+				<summary>PROJETS</summary>
+				<a href="/card">
+					<p>card</p>
+				</a>
+					{% if user %}
+				<a href="/addProject"><p>+</p></a>
+				{% endif %}
+			</details>
+			<div class="col-lg-3 "></ul>
+
+
+		</div>
+
+
+		<span class="burger-icon " id="openBtn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</span>
+
+
+	</header>
