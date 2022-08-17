@@ -2,7 +2,7 @@
 body {
     padding-top: 50px;
     padding-left: 20px;
-    height: 100%;
+    height: 100vh;
     background-image: url('../img/red.jpg');
     color: white;
     background-size: cover;
@@ -211,4 +211,15 @@ details[open] summary {
     width: 100vh;
     height: 100vh;
     font-size: xx-large;
+  }
+  .exp{
+    width: 800px;
+  }
+  .login{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }

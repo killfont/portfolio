@@ -96,9 +96,15 @@ app.get('/home', async (req, res) => {
       res.send(error);
     }
   });
-app.get('/card', async (req, res) => {
+
+  app.get('/card', async (req, res) => {
+    console.log("ejdqjodjo");
+    let projects = await ProjectModel.find()
+    console.log(projects);
     try {
-      res.render('card.twig');
+      res.render('card.twig',{
+        projects:projects
+      });
     
    
     } catch (error) {

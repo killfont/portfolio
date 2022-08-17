@@ -14,8 +14,6 @@ function toggleDark(){
     p[i].classList.toggle('black')
     
   }
-
-  
 }
 
 lab.addEventListener('click', toggleDark)

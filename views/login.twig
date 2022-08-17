@@ -1,19 +1,49 @@
-<div class="modal" data-pokeid={{user._id}}>
-						<div id="modal-container">
-							
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block style %}
+			{% include "style.twig" %}
+		{% endblock %}
+	<title>login</title>
+</head>
+<body>
 
-<form method='post' action="/login" class="col-4 mb-5 modify">
+
+
+<form method='post' action="/login" class="col-4 mb-5 modify login">
 
 	
 	<div class="mb-3">
 		<input type="password" class="form-control" id="password" name="password" placeholder="PASSWORD">
 	</div>
 
-	<button type="submit" class="btn btn-secondary">Login</button>
+	<button type="submit" class="btn  btn-secondary">Login</button>
 
 </form>
 
-								</a>
-							</div>
-						</div>
-					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+							
+
+
+						
+</body>
+</html>

@@ -8,8 +8,17 @@ const buttons = {
 };
 const cardsContainerEl = document.querySelector(".cards__wrapper");
 const appBgContainerEl = document.querySelector(".app__bg");
+const infoElements = document.querySelectorAll('.info')
+const cardElements = document.querySelectorAll('.card')
+const bgElements = document.querySelectorAll('.app__bg__image')
 
 const cardInfosContainerEl = document.querySelector(".info__wrapper");
+
+let index = 1
+let indexNextElement = 2
+let indexPreviousElement = 0
+
+
 
 buttons.next.addEventListener("click", () => swapCards("right"));
 
@@ -23,6 +32,40 @@ function swapCards(direction) {
 	const currentBgImageEl = appBgContainerEl.querySelector(".current--image");
 	const previousBgImageEl = appBgContainerEl.querySelector(".previous--image");
 	const nextBgImageEl = appBgContainerEl.querySelector(".next--image");
+	if (direction == "right") {
+		index++
+		if (index > document.querySelectorAll(".card").length - 1 ) {
+			index = 0
+		}
+	} else {
+		index--
+		if (index < 0) {
+			index = document.querySelectorAll(".card").length - 1 
+		}
+	}
+	if (direction == "right") {
+		indexNextElement++
+		if (indexNextElement > document.querySelectorAll(".card").length - 1 ) {
+			indexNextElement = 0
+		}
+	} else {
+		indexNextElement--
+		if (indexNextElement < 0) {
+			indexNextElement = index + 1
+		}
+	}
+	if (direction == "right") {
+		indexPreviousElement++
+		if (indexPreviousElement > document.querySelectorAll(".card").length - 1 ) {
+			indexPreviousElement = 0
+		}
+	} else {
+		indexPreviousElement--
+		if (indexPreviousElement < 0) {
+			indexPreviousElement = document.querySelectorAll(".card").length - 1 
+		}
+	}
+
 
 	changeInfo(direction);
 	swapCardsClass();
@@ -47,26 +90,43 @@ function swapCards(direction) {
 
 			nextBgImageEl.style.zIndex = "-1";
 
-			currentCardEl.classList.add("previous--card");
-			previousCardEl.classList.add("next--card");
-			nextCardEl.classList.add("current--card");
+			previousCardEl.classList.add("hide--card");
+			nextCardEl.classList.remove("hide--card")
+			cardElements[indexNextElement].classList.add("next--card")
+			cardElements[indexNextElement].classList.remove("hide--card")
+			cardElements[index].classList.add("current--card");
+			cardElements[indexPreviousElement].classList.remove("hide--card")
+			cardElements[indexPreviousElement].classList.add("previous--card")
 
-			currentBgImageEl.classList.add("previous--image");
-			previousBgImageEl.classList.add("next--image");
-			nextBgImageEl.classList.add("current--image");
+
+			previousBgImageEl.classList.add("hide--image");
+			nextCardEl.classList.remove("hide--image")
+			bgElements[indexNextElement].classList.add("next--image")
+			bgElements[indexNextElement].classList.remove("hide--image")
+			bgElements[index].classList.add("current--image");
+			bgElements[indexPreviousElement].classList.remove("hide--image")
+			bgElements[indexPreviousElement].classList.add("previous--image")
+			console.log(bgElements);
+		
 		} else if (direction === "left") {
 			previousCardEl.style.zIndex = "30";
 			nextCardEl.style.zIndex = "20";
 
 			previousBgImageEl.style.zIndex = "-1";
 
-			currentCardEl.classList.add("next--card");
-			previousCardEl.classList.add("current--card");
-			nextCardEl.classList.add("previous--card");
+			nextCardEl.classList.add("hide--card");
+			cardElements[indexNextElement].classList.add("next--card")
+			cardElements[index].classList.add("current--card");
+			cardElements[indexPreviousElement].classList.remove("hide--card")
+			cardElements[indexPreviousElement].classList.add("previous--card")
 
-			currentBgImageEl.classList.add("next--image");
-			previousBgImageEl.classList.add("current--image");
-			nextBgImageEl.classList.add("previous--image");
+			nextBgImageEl.classList.add("hide--image");
+			bgElements[indexNextElement].classList.add("next--image")
+			bgElements[index].classList.add("current--image");
+			bgElements[indexPreviousElement].classList.remove("hide--image")
+			bgElements[indexPreviousElement].classList.add("previous--image")
+
+			
 		}
 	}
 }
@@ -83,6 +143,7 @@ function changeInfo(direction) {
 		pointerEvents: "none",
 	})
 		.to(
+			
 		currentInfoEl.querySelectorAll(".text"),
 		{
 			duration: 0.4,
@@ -118,18 +179,27 @@ function changeInfo(direction) {
 	});
 
 	function swapInfosClass() {
+		console.log(infoElements);
+
 		currentInfoEl.classList.remove("current--info");
 		previousInfoEl.classList.remove("previous--info");
 		nextInfoEl.classList.remove("next--info");
 
 		if (direction === "right") {
-			currentInfoEl.classList.add("previous--info");
-			nextInfoEl.classList.add("current--info");
-			previousInfoEl.classList.add("next--info");
+			previousInfoEl.classList.add("hide--info");
+			nextInfoEl.classList.remove("hide--info")
+			infoElements[indexNextElement].classList.add("next--info")
+			infoElements[index].classList.add("current--info");
+			infoElements[indexPreviousElement].classList.remove("hide--info")
+			infoElements[indexPreviousElement].classList.add("previous--info")
+			
 		} else if (direction === "left") {
-			currentInfoEl.classList.add("next--info");
-			nextInfoEl.classList.add("previous--info");
-			previousInfoEl.classList.add("current--info");
+			nextInfoEl.classList.add("hide--info");
+			infoElements[indexNextElement].classList.add("next--info")
+			infoElements[index].classList.add("current--info");
+			infoElements[indexPreviousElement].classList.remove("hide--info")
+			infoElements[indexPreviousElement].classList.add("previous--info")
+
 		}
 	}
 }
@@ -253,3 +323,6 @@ const waitForImages = () => {
 };
 
 waitForImages();
+
+
+
